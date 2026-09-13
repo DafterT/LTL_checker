@@ -1,0 +1,122 @@
+{
+  "title": "Я выйду замуж не менее двух раз.",
+  "predicates": [
+    "q"
+  ],
+  "formula": "<> (q && X <> q)",
+  "tests": [
+    {
+      "name": "never",
+      "note": "Ни одного события.",
+      "prefix": [
+        { "q": 0 }
+      ],
+      "expected": false
+    },
+    {
+      "name": "once_later",
+      "note": "Ровно одно событие.",
+      "prefix": [
+        { "q": 0 },
+        { "q": 1 }
+      ],
+      "expected": false
+    },
+    {
+      "name": "once_initially",
+      "note": "Одно событие в начальном состоянии.",
+      "prefix": [
+        { "q": 1 }
+      ],
+      "expected": false
+    },
+    {
+      "name": "twice_separate",
+      "note": "Два события с промежутком.",
+      "prefix": [
+        { "q": 0 },
+        { "q": 1 },
+        { "q": 0 },
+        { "q": 1 }
+      ],
+      "expected": true
+    },
+    {
+      "name": "twice_adjacent",
+      "note": "Два соседних события.",
+      "prefix": [
+        { "q": 0 },
+        { "q": 1 },
+        { "q": 1 }
+      ],
+      "expected": true
+    },
+    {
+      "name": "twice_from_initial",
+      "note": "Два соседних события, первое в начальном состоянии.",
+      "prefix": [
+        { "q": 1 },
+        { "q": 1 }
+      ],
+      "expected": true
+    },
+    {
+      "name": "twice_initial_gap",
+      "note": "Первое событие в начальном состоянии, второе позднее.",
+      "prefix": [
+        { "q": 1 },
+        { "q": 0 },
+        { "q": 0 },
+        { "q": 1 }
+      ],
+      "expected": true
+    },
+    {
+      "name": "three_times",
+      "note": "Не менее двух допускает третье событие.",
+      "prefix": [
+        { "q": 0 },
+        { "q": 1 },
+        { "q": 0 },
+        { "q": 1 },
+        { "q": 0 },
+        { "q": 1 }
+      ],
+      "expected": true
+    },
+    {
+      "name": "infinite_events",
+      "note": "События происходят бесконечно.",
+      "prefix": [
+        { "q": 0 }
+      ],
+      "loop": [
+        { "q": 1 },
+        { "q": 0 }
+      ],
+      "expected": true
+    },
+    {
+      "name": "always_true",
+      "note": "Постоянное событие.",
+      "prefix": [
+        { "q": 1 }
+      ],
+      "loop": [
+        { "q": 1 }
+      ],
+      "expected": true
+    },
+    {
+      "name": "one_before_empty_loop",
+      "note": "После единственного начального события идёт пустой цикл.",
+      "prefix": [
+        { "q": 1 }
+      ],
+      "loop": [
+        { "q": 0 }
+      ],
+      "expected": false
+    }
+  ]
+}

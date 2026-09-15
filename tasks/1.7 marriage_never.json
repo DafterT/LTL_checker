@@ -1,0 +1,44 @@
+{
+  "title": "Я никогда не выйду замуж.",
+  "predicates": ["p"],
+  "formula": "[] !p",
+  "tests": [
+    {
+      "name": "never_start_0",
+      "note": "Начальное p=0; событий нет.",
+      "prefix": [
+        {"p": 0}
+      ],
+      "expected": true
+    },
+    {
+      "name": "event_later_start_0",
+      "note": "Начальное p=0; после ожидания происходит ровно одно событие.",
+      "prefix": [
+        {"p": 0},
+        {"p": 0},
+        {"p": 1}
+      ],
+      "expected": false
+    },
+    {
+      "name": "event_now_start_1",
+      "note": "Начальное p=1; единственное событие происходит в начальный момент.",
+      "prefix": [
+        {"p": 1}
+      ],
+      "expected": false
+    },
+    {
+      "name": "always_true",
+      "note": "Начальное p=1 и p=1 во все последующие моменты.",
+      "prefix": [
+        {"p": 1}
+      ],
+      "loop": [
+        {"p": 1}
+      ],
+      "expected": false
+    }
+  ]
+}

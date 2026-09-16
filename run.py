@@ -187,7 +187,7 @@ def parse_result(output, returncode, has_trail):
 
 def replay_trace(spin, folder, timeout):
     """Воспроизвести настоящий .trail и выделить из него состояния сценария."""
-    # Загрузка трейса
+    # Загрузка описания задачи и теста
     snapshot = json.loads((folder / "case.json").read_text(encoding="utf-8"))
     task, test = snapshot["task"], snapshot["test"]
     # Запуск команды

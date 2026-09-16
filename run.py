@@ -325,7 +325,6 @@ def main():
         return 2
     # Обновляем path (текущего процесса и дочерние)
     extra_path = [str(Path(tool).parent) for tool in (cc, spin) if Path(tool).is_absolute()]
-    extra_path.extend(os.path.expandvars(path) for path in config.get("extra_path", []))
     os.environ["PATH"] = os.pathsep.join(extra_path + [os.environ.get("PATH", "")])
     # Обновляем пути через новый path
     spin = shutil.which(spin) or spin

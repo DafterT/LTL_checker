@@ -1,5 +1,4 @@
 {
   "spin": "%LOCALAPPDATA%/Programs/Spin/spin.exe",
-  "cc": "C:/msys64/ucrt64/bin/gcc.exe",
-  "extra_path": ["C:/msys64/usr/bin"]
+  "cc": "C:/msys64/ucrt64/bin/gcc.exe"
 }
